@@ -25,7 +25,7 @@ function startQuiz() {
   document.getElementById("start-screen").style.display = "none";
  
   setInterval(function () {
-    console.log(time)
+    // console.log(time)
     
     
     timerEl.innerHTML = time--
@@ -44,6 +44,24 @@ function startQuiz() {
   console.log(questions[currentQuestionIndex].title)
   console.log(questionTitle)
   questionTitle.textContent=questions[currentQuestionIndex].title
+  document.body.append(questionTitle)
+
+  var div = document.createElement("div")
+
+  for(var i = 0; i < questions[currentQuestionIndex].choices.length; i++){
+  var btn = document.createElement("button")
+  btn.textContent=questions[currentQuestionIndex].choices[i]
+  btn.addEventListener("click", function(e) {
+    if (e.target.textContent == questions[currentQuestionIndex].answer) { 
+      alert("correct")
+    } else {
+      alert("incorrect")
+    }
+  })
+  div.append(btn)
+  }
+
+  questionTitle.append(div)
   // start timer
   // var timeInterval = setInterval(function () {
   //   clockTick()
@@ -74,7 +92,7 @@ function getQuestion() {
 
       function questionClick(event) {
         // check if user guessed wrong
-        if (event.target.textContent === questions[currentQuestionIndex].answer) { }
+        
         // penalize time
         // display new time on page
         // play "wrong" sound effect
