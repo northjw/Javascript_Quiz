@@ -23,20 +23,14 @@ function startQuiz() {
   
   // hide start screen
   document.getElementById("start-screen").style.display = "none";
-  // un-hide questions section
-  document.getElementById("questions").classList.remove("hide");
-  // start timer
-  // var timeInterval = setInterval(function () {
-  //   clockTick()
-  // }, 1000);
-  //show starting time
-   setInterval(function () {
+ 
+  setInterval(function () {
     console.log(time)
     
     
     timerEl.innerHTML = time--
 
-    // timerEl.textContent - time;
+    
 
     
 
@@ -44,6 +38,18 @@ function startQuiz() {
 
     // getQuestion();
   }, 1000);
+ 
+  // un-hide questions section
+  // document.getElementById("questions") = ""
+  console.log(questions[currentQuestionIndex].title)
+  console.log(questionTitle)
+  questionTitle.textContent=questions[currentQuestionIndex].title
+  // start timer
+  // var timeInterval = setInterval(function () {
+  //   clockTick()
+  // }, 1000);
+  //show starting time
+  
 }
 function getQuestion() {
       // get current question object from array
@@ -90,6 +96,7 @@ function getQuestion() {
         }
     
         console.log("quizend")
+        clearTimeout()
         // show end screen
         // show final score
         // hide questions section
